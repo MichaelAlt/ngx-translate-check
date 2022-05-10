@@ -35,6 +35,14 @@ function parseFile(fileName) {
   if (matched && matched.length > 0) {
     foundStrings = matched.map(str => str.match(/(\'|\")(.*)?(\'|\")/)[2]);
   }
+  
+  if (!foundStrings) {
+      const stringMatched = file.match(
+        /wa48App\.[a-zA-Z0-9_.]*/gm
+      );
+      foundStrings = stringMatched;
+  }
+  
   return foundStrings;
 }
 
